@@ -6,6 +6,7 @@ const UsersMiddlewares = require("../middlewares/userMiddlewares")
 const routes = express.Router();
 
 routes.get("/getFilms", FilmsControllers.getFilms);
+routes.get("/getUser/:cookie", UsersControllers.getUser);
 routes.post("/postFilms", FilmsControllers.postFilms);
 routes.post("/signup", UsersControllers.register);
 routes.post("/signin", UsersControllers.login);
