@@ -19,4 +19,17 @@ module.exports = {
       response.status(400).json({ error: "Bad request" });
     }
   },
+  async login(request, response) {
+    const { email, password } = request.body;
+    const user = await Users.findOne({ email }).select("+password");
+
+    if (!user || !password === user.password)
+      return response.status(400).json({ error: "Email or password could be wrong" });
+
+    user.token = jwt.sign({ id: user.id }, authConfig.secret, {
+      expiresIn: 2629800,
+    });
+    user.save();
+    return response.status(200).json({ user });
+  },
 };
