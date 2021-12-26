@@ -44,7 +44,7 @@ module.exports = {
   async getUser(request, response){
     try{
       const { cookie } = request.params;
-      const user = await Users.findOne({ cookie });
+      const user = await Users.findOne({ token: cookie });
       return response.status(200).json({ user });
     } catch (error) {
       response.status(500).json({ error: error.message });
