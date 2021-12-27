@@ -7,9 +7,9 @@ module.exports = {
     return response.status(404).json({ error: "Cannot find any moovie" });
   },
   async postFilms(request, response){
-    const { filmName, date } = request.body
+    const { filmName, date, userID } = request.body
     const film = new Films({
-      filmName, date
+      filmName, date, userID
     })
     try{
       await film.save();

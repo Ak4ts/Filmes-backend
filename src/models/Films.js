@@ -18,6 +18,10 @@ const filmsSchema = new mongoose.Schema({
     type: String,
     default: "Maia&Luiz",
   },
+  userID: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = mongoose.model("Films", filmsSchema)
